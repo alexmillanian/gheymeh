@@ -1,94 +1,20 @@
-/* Basic reset */
+/* ===== Recipe Poster Theme (warm palette, big type, minimal lines) ===== */
 * { box-sizing: border-box; }
-html:focus-within { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.6;
   color: #1f1f1f;
   background: #fbf7f2;
+  line-height: 1.6;
 }
 
-/* Layout */
+/* Page width */
 .container {
-  width: min(1100px, 92%);
+  width: min(980px, 92%);
   margin: 0 auto;
   padding: 1rem 0;
-}
-
-.site-header {
-  background: linear-gradient(180deg, #7a1f1a, #a63b2d);
-  color: #fff;
-  padding: 1.5rem 0 1rem;
-}
-
-.header-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 1rem;
-  align-items: start;
-}
-
-@media (max-width: 850px) {
-  .header-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Typography */
-.kicker {
-  margin: 0 0 0.25rem;
-  opacity: 0.9;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-}
-
-h1 {
-  margin: 0.1rem 0 0.5rem;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  line-height: 1.15;
-}
-
-.subtitle {
-  margin: 0 0 0.75rem;
-  max-width: 60ch;
-  opacity: 0.95;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 1.5rem;
-}
-
-h3 {
-  margin-bottom: 0.35rem;
-}
-
-/* Navigation */
-.nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 0.4rem;
-}
-
-.nav a {
-  display: block;
-  padding: 0.55rem 0.8rem;
-  border-radius: 0.8rem;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-}
-
-.nav a:hover,
-.nav a:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.22);
 }
 
 /* Skip link */
@@ -102,90 +28,248 @@ h3 {
   border-radius: 0.6rem;
   border: 2px solid #000;
 }
+.skip-link:focus { left: 0.5rem; }
 
-.skip-link:focus {
-  left: 0.5rem;
+/* ===== Header: poster banner ===== */
+.site-header {
+  padding: 2.2rem 0 1.4rem;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255,255,255,0.22), rgba(255,255,255,0) 40%),
+    linear-gradient(180deg, #7a1f1a, #a63b2d);
+  color: #fff;
 }
 
-/* Cards */
-.card {
-  background: #fff;
-  border: 1px solid #eadfd6;
-  border-radius: 1rem;
-  padding: 1.1rem;
-  margin: 1rem 0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+.kicker {
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  opacity: 0.9;
 }
 
-/* Small graphical elements */
-.chips {
+h1 {
+  margin: 0 0 0.65rem;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 0 0 1.2rem;
+  max-width: 70ch;
+  opacity: 0.95;
+  font-size: 1.05rem;
+}
+
+/* "Jump to" control */
+.jump {
   display: flex;
+  align-items: center;
+  gap: 0.65rem;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.75rem 0 0;
 }
 
-.chip {
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0.35rem 0.6rem;
+.jump label {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.jump select {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  padding: 0.6rem 0.9rem;
   border-radius: 999px;
-  font-size: 0.9rem;
+  min-width: 240px;
 }
 
-/* Two-column ingredient layout */
-.two-col {
+.jump select:focus {
+  outline: 3px solid rgba(255,255,255,0.65);
+  outline-offset: 2px;
+}
+
+.jump a { color: #fff; }
+
+/* ===== Poster sheet (main content) ===== */
+main.container {
+  padding-top: 1.2rem;
+  padding-bottom: 1.6rem;
+}
+
+/* Section spacing like blocks on a poster */
+section {
+  padding: 1.2rem 0;
+  border-bottom: 2px solid #eadfd6;
+}
+
+section:last-of-type { border-bottom: none; }
+
+h2 {
+  margin: 0 0 0.7rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.01em;
+}
+
+h3 {
+  margin: 1rem 0 0.35rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #5b1411;
+}
+
+p { max-width: 80ch; }
+
+/* ===== Big "Quick Facts" strip (poster vibe) ===== */
+.facts {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 0.8rem;
 }
 
-@media (max-width: 850px) {
-  .two-col { grid-template-columns: 1fr; }
+.facts > div {
+  padding: 0.9rem 0.85rem;
+  border: 2px solid #1f1f1f;
+  border-radius: 1.1rem;
+  background: #fff;
+  box-shadow: 0 10px 0 rgba(0,0,0,0.06);
+  font-size: 1rem;
 }
 
+.facts strong {
+  display: block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  opacity: 0.85;
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 860px) {
+  .facts { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== Recipe grid: two columns with poster separation ===== */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 1.6rem;
+  align-items: start;
+  padding: 1.2rem 0;
+}
+
+@media (max-width: 960px) {
+  .recipe-grid { grid-template-columns: 1fr; }
+}
+
+/* Add a subtle divider between columns on desktop */
+@media (min-width: 961px) {
+  #ingredients {
+    padding-right: 1.2rem;
+    border-right: 2px dashed #d9c9bf;
+  }
+  #steps {
+    padding-left: 1.2rem;
+  }
+}
+
+/* Lists */
+ul, ol { margin: 0.5rem 0 0; }
+ul { padding-left: 1.2rem; }
+li { margin: 0.45rem 0; }
+
+/* Notes look like sticky highlights */
 .note {
+  margin: 1rem 0 0;
+  padding: 0.85rem 0.95rem;
   background: #fff6ea;
-  border: 1px solid #f0dfc6;
-  padding: 0.75rem;
-  border-radius: 0.9rem;
+  border-left: 8px solid #a63b2d;
+  border-radius: 0.8rem;
+  max-width: 80ch;
 }
 
-/* Steps */
-.steps {
-  padding-left: 1.2rem;
+/* ===== Steps as a bold vertical timeline ===== */
+.steps-compact {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  counter-reset: step;
 }
 
-.steps li {
-  margin: 0.65rem 0;
-}
-
-/* Callout */
-.callout {
-  margin-top: 1rem;
-  padding: 0.9rem;
+.steps-compact li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0.9rem;
+  padding: 0.9rem 0.85rem;
+  margin: 0.75rem 0;
+  background: #fff;
+  border: 2px solid #eadfd6;
   border-radius: 1rem;
-  background: #f2f6ff;
-  border: 1px solid #d9e4ff;
+  position: relative;
 }
 
-/* Image gallery */
+.steps-compact li::before {
+  content: counter(step);
+  width: 56px;
+  height: 56px;
+  border-radius: 1rem;
+  background: #7a1f1a;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: grid;
+  place-items: center;
+}
+
+/* A faint "timeline" line behind the number blocks */
+.steps-compact li::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: -18px;
+  bottom: -18px;
+  width: 2px;
+  background: rgba(122, 31, 26, 0.18);
+  z-index: -1;
+}
+
+/* The first and last items shouldn’t extend too far */
+.steps-compact li:first-child::after { top: 28px; }
+.steps-compact li:last-child::after { bottom: 28px; }
+
+/* Safety box: poster stamp */
+.safety {
+  margin-top: 1.2rem;
+  padding: 1rem 1rem;
+  border-radius: 1.1rem;
+  background: #f2f6ff;
+  border: 2px solid #1f1f1f;
+  box-shadow: 0 10px 0 rgba(0,0,0,0.06);
+}
+
+.safety h3 {
+  margin-top: 0;
+  color: #1f1f1f;
+  letter-spacing: 0.06em;
+}
+
+/* ===== Gallery: poster thumbnails ===== */
 .gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0.9rem;
-}
-
-@media (max-width: 950px) {
-  .gallery { grid-template-columns: 1fr; }
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-top: 0.9rem;
 }
 
 figure {
   margin: 0;
-  border: 1px solid #eadfd6;
-  border-radius: 1rem;
-  overflow: hidden;
   background: #fff;
+  border: 2px solid #1f1f1f;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 12px 0 rgba(0,0,0,0.06);
 }
 
 img {
@@ -195,20 +279,29 @@ img {
 }
 
 figcaption {
-  padding: 0.7rem 0.85rem;
-  font-size: 0.95rem;
-  color: #3a3a3a;
+  padding: 0.75rem 0.85rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
 }
 
-/* Footer */
+/* ===== Footer ===== */
 .site-footer {
-  margin-top: 1.5rem;
   background: #1f1f1f;
   color: #fff;
   padding: 1rem 0;
+  margin-top: 1.5rem;
 }
 
 .site-footer p {
   margin: 0;
   opacity: 0.9;
+}
+
+/* Optional: make links look intentional */
+a {
+  color: inherit;
+}
+a:focus {
+  outline: 3px solid rgba(122, 31, 26, 0.35);
+  outline-offset: 2px;
 }
